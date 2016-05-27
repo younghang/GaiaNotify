@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+<LinearLayout
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="250dp"
+        android:layout_height="272dp"
+
+        android:src="@drawable/miku_gaia"
+        android:id="@+id/gif"
+
+        />
+</LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <include layout="@layout/span_line" />
+
+
+        <RelativeLayout
+            android:background="@drawable/btn_press"
+            android:contextClickable="true"
+            android:id="@+id/all_ring_layout"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/StyleTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="一直响"
+                android:textAlignment="center" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/ringalways"
+                style="@style/SwitchButtonStyle"
+                android:layout_width="wrap_content"
+
+
+                android:layout_height="wrap_content"
+
+
+                android:layout_alignParentRight="true"
+                app:kswTintColor="@color/colorPrimary" />
+
+
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:background="@drawable/btn_press"
+            android:contextClickable="true"
+            android:id="@+id/save_pic_layout"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/StyleTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="存封面" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/savepic"
+                style="@style/SwitchButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_alignParentRight="true"
+
+                app:kswTintColor="@color/colorPrimary" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/btn_press"
+            android:contextClickable="true"
+            android:id="@+id/system_style_layout"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/StyleTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="使用系统通知样式" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/changeNotifyStyle"
+                style="@style/SwitchButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_alignParentRight="true"
+
+                app:kswTintColor="@color/colorPrimary" />
+
+
+        </RelativeLayout>
+        <include layout="@layout/span_line"/>
+        <LinearLayout
+            android:contextClickable="true"
+            android:id="@+id/setting_layout"
+
+            android:background="@drawable/btn_press"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:clickable="true">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+
+                android:src="@android:drawable/ic_menu_manage"
+                />
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                style="@style/StyleTitleText"
+                android:text="其他"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical|center" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

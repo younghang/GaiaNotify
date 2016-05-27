@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    tools:context="com.young.gaianotify.fragment.DownloadFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/infoDownload"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="合并用的圈圈，下载的时候不要点,停止下载之后手动点合并或圆圈" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:max="100"
+
+            />
+
+        <com.young.gaianotify.dashspinner.DashSpinner
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:id="@+id/progress_spinner"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            app:arcColor="#03A9F4"
+            app:arcStartPosition="270.0"
+            app:arcSweepSpeed="20.0"
+            app:arcWidth="4dp"
+            app:arcLength="45.0"
+            app:innerCircleSuccessColor="#388E3C"
+            app:innerCircleFailureColor="#F44336"
+            app:innerCircleUnknownColor="#FFA000"
+            app:outerRingColor="#607D8B"
+            app:outerRingWidth="1dp"
+            app:maxProgressTextSize="40sp"
+            app:textColorFrom="#FF0000"
+            app:textColorTo="#FFFFFF"
+            app:showProgressText="true"
+            />
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/downloadSwitch"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:padding="20dp"
+            app:kswThumbWidth="120dp"
+            app:kswTintColor="@color/colorPrimary" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.young.gaianotify" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission android:name="android.permission.STATUS_BAR_SERVICE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.CheckOnlineService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name=".service.CheckGaiaOnlineService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name=".service.SaveGaiaPicService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".DialogInfo"
+            android:theme="@style/dialog" >
+        </activity>
+        <activity
+            android:name=".ImageShow"
+            android:theme="@style/SwipBackActivity" >
+        </activity>
+        <activity
+            android:name=".ToolBar.ToolBarActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".ToolTest"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <service
+            android:name=".service.DownloadGaiaService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity android:name=".SettingActivity"
+            android:theme="@style/SwipBackActivity" >
+        </activity>
+    </application>
+
+</manifest>

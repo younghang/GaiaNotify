@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout
+   android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="16dp"
+   android:background="@color/white"
+      >
+<TextView
+
+    android:id="@+id/dialog_info"
+    android:textScaleX="1"
+    android:textSize="16sp"
+
+    android:lineSpacingExtra="5dp"
+    android:layout_width="match_parent"
+    android:textColor="@color/black"
+    android:shadowColor="@color/darkgray"
+    android:text="@string/textinfo"
+    android:layout_height="wrap_content" />
+    <Button
+
+        android:background="@drawable/btn_press"
+        android:layout_below="@+id/dialog_info"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:text="确定"
+        android:id="@+id/dialogbutton"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorPrimary"
+       />
+</RelativeLayout>
+
+    </LinearLayout>

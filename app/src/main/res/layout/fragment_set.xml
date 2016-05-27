@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_set"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.young.gaianotify.SetFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/checkSwitch"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+
+
+            android:layout_marginTop="40dp"
+
+            android:gravity="center"
+
+            android:padding="20dp"
+            app:kswThumbWidth="120dp"
+            app:kswTintColor="@color/colorPrimary" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/edit_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            app:dsb_indicatorColor="@color/colorPrimaryDark"
+            app:dsb_indicatorFormatter="%d分钟"
+            app:dsb_indicatorTextAppearance="?android:attr/textAppearanceSmall"
+            app:dsb_max="30"
+            app:dsb_min="1"
+            app:dsb_progressColor="@color/colorPrimary"
+            app:dsb_rippleColor="@color/colorPrimary"
+            app:dsb_scrubberHeight="1dp"
+            app:dsb_trackColor="@color/colorPrimary"
+            app:dsb_trackHeight="1dp" />
+
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/edit_time"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+
+            android:text="左边可以拉出设置0.0"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/testButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="start picture"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
