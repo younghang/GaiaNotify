@@ -3,18 +3,25 @@ package com.young.gaianotify;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
+import com.android.volley.VolleyError;
+import com.young.gaianotify.Network.VolleyMethodManage;
+import com.young.gaianotify.Network.VolleyRequest;
 import com.young.gaianotify.RecyclerViewPractice.DividerItemDecoration;
 import com.young.gaianotify.RecyclerViewPractice.SimpleRecylcerAdapter;
 import com.young.gaianotify.swipebacklayout.lib.SwipeBackLayout;
@@ -22,6 +29,10 @@ import com.young.gaianotify.swipebacklayout.lib.app.SwipeBackActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class SettingActivity extends SwipeBackActivity {
 
@@ -32,7 +43,10 @@ public class SettingActivity extends SwipeBackActivity {
     private SwipeBackLayout mSwipeBackLayout;
     private RecyclerView recyclerView;
     private List<String> mDatas ;
-
+    private Button btnUpdate;
+    MaterialDialog mMaterialDialog;
+    static final String UpdateUrl="https://github.com/younghang/GaiaNotify/blob/master/notify_update.txt";
+static final int NotifyVersion=10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +83,86 @@ public class SettingActivity extends SwipeBackActivity {
                 startActivity(intent);
             }
         });
+        btnUpdate = (Button) findViewById(R.id.update_button);
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMaterialDialog = new MaterialDialog(SettingActivity.this);
+                View view = LayoutInflater.from(SettingActivity.this)
+                        .inflate(R.layout.dialog_progress,
+                                null);
+                mMaterialDialog.setCanceledOnTouchOutside(true);
+                mMaterialDialog.setView(view).show();
 
+
+                    new Runnable(
+
+                    ) {
+                        @Override
+                        public void run() {
+                            VolleyRequest.RequestStringGet(UpdateUrl, VolleyRequest.stringgettag, new VolleyMethodManage<String>() {
+                                @Override
+                                public void onSuccess(String result) {
+                                    mMaterialDialog.dismiss();
+                                    mMaterialDialog = new MaterialDialog(SettingActivity.this);
+                                    boolean HaveUpdate=false;
+                                    Log.v("TAG", result);
+                                    String versionReg="NotifyVersion=[0-9]+#";
+                                    Pattern pattern = Pattern.compile(versionReg);
+                                    Matcher matcher = pattern.matcher(result);
+
+                                    String version="";
+                                    while(matcher.find())
+                                        version =matcher.group();
+                                    version=version.split("=")[1];
+                                    version=version.substring(0, version.length() - 1);
+                                    int LastedVersion = Integer.parseInt(version);
+                                    if (LastedVersion>NotifyVersion)
+                                        HaveUpdate=true;
+
+                                    if (HaveUpdate) {
+                                        mMaterialDialog.setTitle("提示").setMessage("当前版本:"+NotifyVersion+"\n最新版本："+LastedVersion+"\n有更新点击前往")
+                                                .setPositiveButton("前往", new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        String url = "http://yun.baidu.com/share/link?shareid=3067013852&uk=3514645625";
+                                                        Uri uri = Uri.parse(url);
+                                                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                                        startActivity(intent);
+                                                    }
+                                                }).setCanceledOnTouchOutside(true)
+                                                .show();
+                                    }
+                                        else {
+                                            mMaterialDialog.setTitle("提示").setMessage("当前版本:"+NotifyVersion+"\n最新版本："+LastedVersion+"\n没有更新")
+                                                    .setPositiveButton("关闭", new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            mMaterialDialog.dismiss();
+                                                        }
+                                                    }).setCanceledOnTouchOutside(true)
+                                                .show();
+                                    }
+                                }
+
+                                @Override
+                                public void onError(VolleyError error) {
+                                    mMaterialDialog.dismiss();
+                                    mMaterialDialog = new MaterialDialog(SettingActivity.this);
+                                    mMaterialDialog.setTitle("提示").setMessage("检测失败")
+                                            .setPositiveButton("关闭", new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    mMaterialDialog.dismiss();
+                                                }
+                                            }).setCanceledOnTouchOutside(true)
+                                            .show();
+                                }
+                            });
+                        }
+                    }.run();
+            }
+        });
 
 //        InitailView();
 //        InitailDatas();

@@ -36,4 +36,5 @@ dependencies {
 //    compile 'com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar'
     compile 'com.alexvasilkov:gesture-views:2.1.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'me.drakeet.materialdialog:library:1.3.1'
 }
